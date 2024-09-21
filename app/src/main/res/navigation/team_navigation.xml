@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hostFragment"
+    app:startDestination="@id/itemWhatweplay">
+
+    <fragment
+        android:id="@+id/itemWhatweplay"
+        android:name="com.example.teamesport.WhatweplayFragment"
+        android:label="fragment_whatweplay"
+        tools:layout="@layout/fragment_whatweplay" >
+        <action
+            android:id="@+id/actionTeamsFragment"
+            app:destination="@id/teamsFragment" />
+        <action
+            android:id="@+id/actionAchievementFragment"
+            app:destination="@id/achievementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="com.example.teamesport.AchievementFragment"
+        android:label="fragment_achievement"
+        tools:layout="@layout/fragment_achievement" />
+    <fragment
+        android:id="@+id/teamsFragment"
+        android:name="com.example.teamesport.TeamsFragment"
+        android:label="fragment_teams"
+        tools:layout="@layout/fragment_teams" >
+        <action
+            android:id="@+id/actionDetailteamFragment"
+            app:destination="@id/detailteamFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailteamFragment"
+        android:name="com.example.teamesport.DetailteamFragment"
+        android:label="fragment_detailteam"
+        tools:layout="@layout/fragment_detailteam" />
+    <fragment
+        android:id="@+id/itemWhoweare"
+        android:name="com.example.teamesport.WhoweareFragment"
+        android:label="fragment_whoweare"
+        tools:layout="@layout/fragment_whoweare" />
+</navigation>
