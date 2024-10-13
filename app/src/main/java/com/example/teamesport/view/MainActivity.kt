@@ -1,4 +1,4 @@
-package com.example.teamesport
+package com.example.teamesport.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.example.teamesport.R
 import com.example.teamesport.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

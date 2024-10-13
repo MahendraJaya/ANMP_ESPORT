@@ -1,4 +1,4 @@
-package com.example.teamesport
+package com.example.teamesport.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,7 +19,7 @@ class TeamsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnDetail.setOnClickListener {
-            val action = WhatweplayFragmentDirections.actionAchievementFragment()
+            val action = TeamsFragmentDirections.actionDetailteamFragment()
             Navigation.findNavController(it).navigate(action)
         }
     }

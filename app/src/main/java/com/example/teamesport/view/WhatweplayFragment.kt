@@ -1,4 +1,4 @@
-package com.example.teamesport
+package com.example.teamesport.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

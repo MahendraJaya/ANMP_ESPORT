@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/itemWhatweplay"
-        android:name="com.example.teamesport.WhatweplayFragment"
+        android:name="com.example.teamesport.view.WhatweplayFragment"
         android:label="fragment_whatweplay"
         tools:layout="@layout/fragment_whatweplay" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/achievementFragment"
-        android:name="com.example.teamesport.AchievementFragment"
+        android:name="com.example.teamesport.view.AchievementFragment"
         android:label="fragment_achievement"
         tools:layout="@layout/fragment_achievement" />
     <fragment
         android:id="@+id/teamsFragment"
-        android:name="com.example.teamesport.TeamsFragment"
+        android:name="com.example.teamesport.view.TeamsFragment"
         android:label="fragment_teams"
         tools:layout="@layout/fragment_teams" >
         <action
@@ -32,13 +32,13 @@
             app:destination="@id/detailteamFragment" />
     </fragment>
     <fragment
-        android:id="@+id/detailteamFragment"
-        android:name="com.example.teamesport.DetailteamFragment"
-        android:label="fragment_detailteam"
-        tools:layout="@layout/fragment_detailteam" />
-    <fragment
         android:id="@+id/itemWhoweare"
-        android:name="com.example.teamesport.WhoweareFragment"
+        android:name="com.example.teamesport.view.WhoweareFragment"
         android:label="fragment_whoweare"
         tools:layout="@layout/fragment_whoweare" />
+    <fragment
+        android:id="@+id/detailteamFragment"
+        android:name="com.example.teamesport.view.DetailteamFragment"
+        android:label="fragment_detailteam"
+        tools:layout="@layout/fragment_detailteam" />
 </navigation>
