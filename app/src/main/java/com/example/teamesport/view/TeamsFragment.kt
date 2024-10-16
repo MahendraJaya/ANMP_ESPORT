@@ -18,8 +18,18 @@ class TeamsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val gambar = arguments?.getString("gambar")
         binding.btnDetail.setOnClickListener {
-            val action = TeamsFragmentDirections.actionDetailteamFragment()
+            val action = TeamsFragmentDirections.actionDetailteamFragment(gambar.toString(), "team A")
+            Navigation.findNavController(it).navigate(action)
+        }
+        binding.btnDetail2.setOnClickListener {
+            val action = TeamsFragmentDirections.actionDetailteamFragment(gambar.toString(), "team B")
+            Navigation.findNavController(it).navigate(action)
+        }
+        binding.btnDetail3.setOnClickListener {
+            val action = TeamsFragmentDirections.actionDetailteamFragment(gambar.toString(), "team C")
             Navigation.findNavController(it).navigate(action)
         }
     }

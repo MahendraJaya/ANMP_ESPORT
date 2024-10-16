@@ -30,7 +30,7 @@ class GameListAdapter(val gamelist:ArrayList<Model.Game>):RecyclerView.Adapter<G
         }
 
         holder.binding.btnTeam.setOnClickListener {
-            val action = WhatweplayFragmentDirections.actionTeamsFragment()
+            val action = WhatweplayFragmentDirections.actionTeamsFragment(gamelist[position].gameImageUrl.toString())
             Navigation.findNavController(it).navigate(action)
         }
     }

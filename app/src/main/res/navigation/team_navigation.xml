@@ -34,6 +34,9 @@
         <action
             android:id="@+id/actionDetailteamFragment"
             app:destination="@id/detailteamFragment" />
+        <argument
+            android:name="gambar"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/itemWhoweare"
@@ -44,5 +47,12 @@
         android:id="@+id/detailteamFragment"
         android:name="com.example.teamesport.view.DetailteamFragment"
         android:label="fragment_detailteam"
-        tools:layout="@layout/fragment_detailteam" />
+        tools:layout="@layout/fragment_detailteam" >
+        <argument
+            android:name="gambar"
+            app:argType="string" />
+        <argument
+            android:name="team"
+            app:argType="string" />
+    </fragment>
 </navigation>
