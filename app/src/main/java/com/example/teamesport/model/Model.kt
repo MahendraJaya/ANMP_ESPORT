@@ -1,6 +1,7 @@
 package com.example.teamesport.model
 
 import com.google.gson.annotations.SerializedName
+import java.time.Year
 
 class Model {
 
@@ -13,5 +14,13 @@ class Model {
         var gameDescription:String?
     )
 
+    data class Achievement(
+        @SerializedName("gameTitle")
+        var gameTitle:String?,
+        @SerializedName("gameAchievement")
+        var gameAchievement:String?,
+        @SerializedName("gameYear")
+        var gameYear: Int?
+    )
 
 }

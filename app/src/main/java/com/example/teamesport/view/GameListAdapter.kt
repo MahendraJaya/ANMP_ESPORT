@@ -25,7 +25,7 @@ class GameListAdapter(val gamelist:ArrayList<Model.Game>):RecyclerView.Adapter<G
         holder.binding.txtDescription.text = gamelist[position].gameDescription
 
         holder.binding.btnAchievement.setOnClickListener {
-            val action = WhatweplayFragmentDirections.actionAchievementFragment()
+            val action = WhatweplayFragmentDirections.actionAchievementFragment(gamelist[position].gameTitle.toString())
             Navigation.findNavController(it).navigate(action)
         }
 
