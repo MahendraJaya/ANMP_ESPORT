@@ -12,6 +12,7 @@ import com.example.teamesport.R
 import com.example.teamesport.databinding.FragmentAchievementBinding
 import com.example.teamesport.model.Model
 import com.example.teamesport.viewmodel.AchievementViewModel
+import com.squareup.picasso.Picasso
 
 class AchievementFragment : Fragment() {
 
@@ -31,6 +32,14 @@ class AchievementFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(AchievementViewModel::class.java)
         viewModel.refresh()
+
+        val picasso = Picasso.Builder(view.context)
+        picasso.listener { picasso, uri, exception ->
+            exception.printStackTrace()
+        }
+        val gambar = arguments?.getString("gameImage")
+        picasso.build().load(gambar).into(binding.imgGame)
+
 
         binding.txtTitle.text = arguments?.getString("gameName")
         viewModel.achievementLD.observe(viewLifecycleOwner, Observer {

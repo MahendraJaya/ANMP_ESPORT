@@ -25,6 +25,9 @@
         <argument
             android:name="gameName"
             app:argType="string" />
+        <argument
+            android:name="gameImage"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/teamsFragment"

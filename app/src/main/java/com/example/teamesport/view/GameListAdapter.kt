@@ -6,6 +6,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teamesport.databinding.GameListItemBinding
 import com.example.teamesport.model.Model
+import com.squareup.picasso.Picasso
 
 class GameListAdapter(val gamelist:ArrayList<Model.Game>):RecyclerView.Adapter<GameListAdapter.WhatWePlayViewHolder>() {
 
@@ -24,8 +25,15 @@ class GameListAdapter(val gamelist:ArrayList<Model.Game>):RecyclerView.Adapter<G
         holder.binding.txtTitle.text = gamelist[position].gameTitle
         holder.binding.txtDescription.text = gamelist[position].gameDescription
 
+        val picasso = Picasso.Builder(holder.itemView.context)
+        picasso.listener { picasso, uri, exception ->
+            exception.printStackTrace()
+        }
+
+        picasso.build().load(gamelist[position].gameImageUrl).into(holder.binding.imageView)
+
         holder.binding.btnAchievement.setOnClickListener {
-            val action = WhatweplayFragmentDirections.actionAchievementFragment(gamelist[position].gameTitle.toString())
+            val action = WhatweplayFragmentDirections.actionAchievementFragment(gamelist[position].gameTitle.toString(), gamelist[position].gameImageUrl.toString())
             Navigation.findNavController(it).navigate(action)
         }
 
