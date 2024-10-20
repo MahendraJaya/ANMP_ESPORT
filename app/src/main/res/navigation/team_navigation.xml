@@ -16,6 +16,9 @@
         <action
             android:id="@+id/actionAchievementFragment"
             app:destination="@id/achievementFragment" />
+        <action
+            android:id="@+id/actionScheduleFragment"
+            app:destination="@id/scheduleFragment" />
     </fragment>
     <fragment
         android:id="@+id/achievementFragment"
@@ -58,4 +61,9 @@
             android:name="team"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="com.example.teamesport.view.ScheduleFragment"
+        android:label="fragment_schedule"
+        tools:layout="@layout/fragment_schedule" />
 </navigation>

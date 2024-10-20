@@ -10,4 +10,8 @@
         android:id="@+id/itemWhoweare"
         android:icon="@drawable/baseline_info_24"
         android:title="Who We Are" />
+    <item
+        android:id="@+id/scheduleFragment"
+        android:icon="@drawable/baseline_calendar_month_24"
+        android:title="Schedule" />
 </menu>
