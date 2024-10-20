@@ -1,7 +1,10 @@
 package com.example.teamesport.view
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teamesport.databinding.ScheduleItemBinding
 import com.example.teamesport.model.Model
@@ -23,6 +26,12 @@ class ScheduleAdapter(val schedList:ArrayList<Model.Schedule>): RecyclerView.Ada
         holder.binding.txtTeam.text = schedList[position].schedTeam
         holder.binding.txtDateMon.text = schedList[position].schedMon
         holder.binding.txtDateNum.text = schedList[position].schedDate
+
+        holder.binding.cardView.setOnClickListener{
+            val action = ScheduleFragmentDirections.actionScheduleFragmentToScheduleDetailFragment(schedList[position].schedEvent, schedList[position].schedTeam.toString(), schedList[position].schedMon.toString(), schedList[position].schedDate.toString(), schedList[position].schedPhotoUrl.toString(),schedList[position].schedDesc.toString(),schedList[position].schedLocation.toString())
+            Navigation.findNavController(it).navigate(action)
+
+        }
     }
 
     fun updateScheduleList(newScheduleList: ArrayList<Model.Schedule>) {
