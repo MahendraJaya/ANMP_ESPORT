@@ -1,10 +1,16 @@
 package com.example.teamesport.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.teamesport.model.Model
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class AchievementViewModel(application : Application) : AndroidViewModel(application) {
 
@@ -16,20 +22,34 @@ class AchievementViewModel(application : Application) : AndroidViewModel(applica
 
 
     fun refresh(){
-    achievementLD.value = arrayListOf(
-        Model.Achievement("The Legend of Zelda: Breath of the Wild", "The International 2nd", 2024),
-        Model.Achievement( "The Legend of Zelda: Breath of the Wild", "MPL 1st", 2022),
-        Model.Achievement( "The Legend of Zelda: Breath of the Wild", "The International 1st", 2019),
-        Model.Achievement( "Assassin's Creed Valhalla", "RT Cup 1st", 2021),
-        Model.Achievement( "Assassin's Creed Valhalla", "RW Cup 3rd", 2024),
-        Model.Achievement( "Cyberpunk 2077", "Rector Cup 3rd", 2022),
-        Model.Achievement( "Cyberpunk 2077", "President Cup 1st", 2024)
-    )
-
-
         achievementLoadErrorLD.value = false
         loadingLD.value = true
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "https://www.jsonkeeper.com/b/31FE"
 
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            {
+                loadingLD.value = false
+                Log.d("showvolley", it)
+                val type = object : TypeToken<List<Model.Achievement>>() {}.type
+                val result = Gson().fromJson<List<Model.Achievement>>(it, type)
+                achievementLD.value = result as ArrayList<Model.Achievement>?
+                loadingLD.value = false
+
+                Log.d("showvolley", result.toString())
+                loadingLD.value = false
+                Log.d("showvoley", it)
+            },
+            {
+                Log.d("showvoley", it.toString())
+                achievementLoadErrorLD.value = false
+                loadingLD.value = false
+            }
+        )
+
+        stringRequest.tag = TAG
+        queue?.add(stringRequest)
 
     }
 
