@@ -80,6 +80,7 @@ class AchievementFragment : Fragment() {
     fun viewAchievementWithYear(achievement: List<Model.Achievement>, gameName: String, year:String){
 
         if(year == "All"){
+
             val filteredAchievements = achievement.filter { it.gameTitle == gameName }
             val formattedAchievements = filteredAchievements.mapIndexed { index, achievement ->
                 "${index + 1}. ${achievement.gameAchievement} (${achievement.gameYear})"

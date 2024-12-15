@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/hostFragment"
-    app:startDestination="@id/itemWhatweplay">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/itemWhatweplay"
         android:name="com.example.teamesport.view.WhatweplayFragment"
         android:label="fragment_whatweplay"
-        tools:layout="@layout/fragment_whatweplay" >
+        tools:layout="@layout/fragment_whatweplay">
         <action
             android:id="@+id/actionTeamsFragment"
             app:destination="@id/teamsFragment" />
@@ -24,7 +24,7 @@
         android:id="@+id/achievementFragment"
         android:name="com.example.teamesport.view.AchievementFragment"
         android:label="fragment_achievement"
-        tools:layout="@layout/fragment_achievement" >
+        tools:layout="@layout/fragment_achievement">
         <argument
             android:name="gameName"
             app:argType="string" />
@@ -36,7 +36,7 @@
         android:id="@+id/teamsFragment"
         android:name="com.example.teamesport.view.TeamsFragment"
         android:label="fragment_teams"
-        tools:layout="@layout/fragment_teams" >
+        tools:layout="@layout/fragment_teams">
         <action
             android:id="@+id/actionDetailteamFragment"
             app:destination="@id/detailteamFragment" />
@@ -53,7 +53,7 @@
         android:id="@+id/detailteamFragment"
         android:name="com.example.teamesport.view.DetailteamFragment"
         android:label="fragment_detailteam"
-        tools:layout="@layout/fragment_detailteam" >
+        tools:layout="@layout/fragment_detailteam">
         <argument
             android:name="gambar"
             app:argType="string" />
@@ -65,7 +65,7 @@
         android:id="@+id/scheduleFragment"
         android:name="com.example.teamesport.view.ScheduleFragment"
         android:label="fragment_schedule"
-        tools:layout="@layout/fragment_schedule" >
+        tools:layout="@layout/fragment_schedule">
         <action
             android:id="@+id/action_scheduleFragment_to_scheduleDetailFragment"
             app:destination="@id/scheduleDetailFragment" />
@@ -74,11 +74,12 @@
         android:id="@+id/scheduleDetailFragment"
         android:name="com.example.teamesport.view.ScheduleDetailFragment"
         android:label="fragment_schedule_detail"
-        tools:layout="@layout/fragment_schedule_detail" >
+        tools:layout="@layout/fragment_schedule_detail">
         <argument
             android:name="schedEvent"
             app:argType="string" />
-        <argument android:name="schedTeam"
+        <argument
+            android:name="schedTeam"
             app:argType="string" />
         <argument
             android:name="schedMon"
@@ -89,10 +90,20 @@
         <argument
             android:name="schedPhotoUrl"
             app:argType="string" />
-        <argument android:name="schedDesc"
+        <argument
+            android:name="schedDesc"
             app:argType="string" />
         <argument
             android:name="schedLoc"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.teamesport.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/actionItemWhatweplay"
+            app:destination="@id/itemWhatweplay" />
     </fragment>
 </navigation>
