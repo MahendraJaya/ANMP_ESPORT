@@ -1,11 +1,7 @@
 package com.example.teamesport.model
 
-import androidx.room.ColumnInfo
 import com.google.gson.annotations.SerializedName
 import com.google.gson.internal.bind.DefaultDateTypeAdapter.DateType
-import java.io.Serializable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import java.time.Year
 import java.util.Date
 
@@ -48,13 +44,4 @@ class Model {
         var schedPhotoUrl: String?
     )
 
-    @Entity(tableName = "users")
-    data class User(
-        @ColumnInfo(name="firstname")
-        var firstname: String,
-        @ColumnInfo(name="lastname")
-        var lastname: String,
-        @PrimaryKey var username: String,
-        var password: String
-    ): Serializable
 }
