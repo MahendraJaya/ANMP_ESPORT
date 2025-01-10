@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.transition.Visibility
 import com.example.teamesport.R
 import com.example.teamesport.databinding.FragmentWhatweplayBinding
 import com.example.teamesport.databinding.FragmentWhoweareBinding
@@ -12,6 +13,7 @@ import com.squareup.picasso.Picasso
 
 class WhoweareFragment : Fragment() {
 
+    var angka = 0;
     private lateinit var binding:FragmentWhoweareBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +31,15 @@ class WhoweareFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.txtTitle.text = "Who We Are"
         binding.txtDescription.text = "Siap untuk menyaksikan dominasi sejati di dunia esports? Tim kami, yang terdiri dari para pemain terbaik dan paling berpengalaman, siap mengguncang panggung dunia dengan permainan yang tak tertandingi. Kami tidak hanya bermain, kami menciptakan sejarah."
+        binding.btnLike.setOnClickListener{
+            angka += 1;
+            if (angka > 10){
+                binding.btnLike.visibility = View.INVISIBLE
+            }else{
+                binding.btnLike.text = angka.toString()
+            }
 
+        }
         val picasso = Picasso.Builder(view.context)
         picasso.listener { picasso, uri, exception ->
             exception.printStackTrace()

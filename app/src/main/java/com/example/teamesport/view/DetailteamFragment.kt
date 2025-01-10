@@ -32,5 +32,9 @@ class DetailteamFragment : Fragment() {
         val gambar = arguments?.getString("gambar")
         picasso.build().load(gambar).into(binding.imgGame)
     }
-
+//TODO change all json to DAO
+//TODO change register activity to registerFragment
+//TODO fix login
+//TODO fix top nav
+//TODO make apply team
 }

@@ -24,3 +24,8 @@ interface UserDao {
     @Update
     fun update(user: Model.User)
 }
+
+@Dao
+interface ProposalDao{
+
+}

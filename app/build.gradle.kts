@@ -56,6 +56,7 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("androidx.room:room-runtime:2.5.1")
     implementation("androidx.room:room-ktx:2.5.1")
+    implementation(libs.androidx.room.common)
     kapt("androidx.room:room-compiler:2.5.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

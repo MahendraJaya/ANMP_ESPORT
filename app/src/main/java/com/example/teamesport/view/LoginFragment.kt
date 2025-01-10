@@ -27,10 +27,10 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.btnRegister.setOnClickListener {
-//            val action = LoginFragmentDirections.actionRegisterFragment()
+       binding.btnRegister.setOnClickListener {
+ //          val action = LoginFragmentDirections.actionRegisterFragment()
 //            Navigation.findNavController(it).navigate(action)
-//        }
+        }
     }
 
 }
