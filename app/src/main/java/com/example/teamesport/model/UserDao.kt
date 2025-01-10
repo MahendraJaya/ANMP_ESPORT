@@ -29,3 +29,29 @@ interface UserDao {
 interface ProposalDao{
 
 }
+@Dao
+interface GameDao {
+    @Insert
+    suspend fun insertAll(games: List<Model.Game>)
+
+    @Query("SELECT * FROM games")
+    suspend fun getAllGames(): List<Model.Game>
+}
+
+@Dao
+interface AchievementDao {
+    @Insert
+    suspend fun insertAll(achievements: List<Model.Achievement>)
+
+    @Query("SELECT * FROM achievements")
+    suspend fun getAllAchievements(): List<Model.Achievement>
+}
+
+@Dao
+interface ScheduleDao {
+    @Insert
+    suspend fun insertAll(schedules: List<Model.Schedule>)
+
+    @Query("SELECT * FROM schedules")
+    suspend fun getAllSchedules(): List<Model.Schedule>
+}
