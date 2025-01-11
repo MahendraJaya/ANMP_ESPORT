@@ -3,6 +3,7 @@ package com.example.teamesport.viewmodel
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import buildDb
@@ -18,6 +19,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application), C
 
     private val job = Job()
     val login = MutableLiveData<Boolean>()
+    val tes_login = true
     val register = MutableLiveData<String>()
     private val sharePref = SharePref(application.applicationContext)
     fun login(username: String, password: String) {
@@ -31,6 +33,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application), C
                 login.postValue(true)
             } else {
                 login.postValue(false)
+                sharePref.clearSession()
             }
         }
     }
@@ -43,6 +46,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application), C
 
         launch {
             val db = buildDb(getApplication())
+            Log.d("cek_buat_db", "cek_register: buat db")
             val existingUser = db.userDao().selectUser(username)
             if (existingUser != null) {
                 register.postValue("Username already exists!")

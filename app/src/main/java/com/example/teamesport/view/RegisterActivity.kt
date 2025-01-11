@@ -2,6 +2,8 @@ package com.example.teamesport.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +27,12 @@ class RegisterActivity : AppCompatActivity(){
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnRegister.isEnabled = false
+
+        binding.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            binding.btnRegister.isEnabled = isChecked // Enable or disable button
+        }
+
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         binding.btnRegister.setOnClickListener {
@@ -35,10 +43,11 @@ class RegisterActivity : AppCompatActivity(){
             val confirmPassword = binding.inputConfirm.text.toString()
             viewModel.cek_register(firstname, lastname, username, password, confirmPassword)
         }
+        Log.d("tes register", "onCreate: masuk tombol register")
         viewModel.register.observe(this) { status ->
             when {
                 status == "Registration successful!" -> {
-
+                Log.d("regsiter_berhasil", "berhasil daftar")
                 }
                 else -> {
                     Toast.makeText(this, status, Toast.LENGTH_SHORT).show()
