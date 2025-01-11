@@ -25,10 +25,7 @@ interface UserDao {
     fun update(user: Model.User)
 }
 
-@Dao
-interface ProposalDao{
 
-}
 @Dao
 interface GameDao {
     @Insert

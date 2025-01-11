@@ -4,58 +4,57 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.android.volley.Request
+import androidx.lifecycle.viewModelScope
 import com.android.volley.RequestQueue
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
+
+import com.example.teamesport.model.AchievementDao
 import com.example.teamesport.model.Model
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
-class AchievementViewModel(application : Application) : AndroidViewModel(application) {
+import kotlinx.coroutines.launch
 
-    val achievementLD = MutableLiveData<ArrayList<Model.Achievement>>()
+
+class AchievementViewModel(application: Application, private val achievementDao: AchievementDao) :
+    AndroidViewModel(application) {
+
+    val achievementLD = MutableLiveData<List<Model.Achievement>>()
     val achievementLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
-    val TAG = "volleyTag"
+    private val TAG = "volleyTag"
     private var queue: RequestQueue? = null
 
-
-    fun refresh(){
+    fun refresh() {
         achievementLoadErrorLD.value = false
         loadingLD.value = true
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "https://www.jsonkeeper.com/b/31FE"
 
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            {
-                loadingLD.value = false
-                Log.d("showvolley", it)
-                val type = object : TypeToken<List<Model.Achievement>>() {}.type
-                val result = Gson().fromJson<List<Model.Achievement>>(it, type)
-                achievementLD.value = result as ArrayList<Model.Achievement>?
-                loadingLD.value = false
-
-                Log.d("showvolley", result.toString())
-                loadingLD.value = false
-                Log.d("showvoley", it)
-            },
-            {
-                Log.d("showvoley", it.toString())
-                achievementLoadErrorLD.value = false
-                loadingLD.value = false
+        viewModelScope.launch {
+            try {
+                // Fetch data from the database
+                val cachedAchievements = achievementDao.getAllAchievements()
+                achievementLD.postValue(cachedAchievements)
+                loadingLD.postValue(false)
+            } catch (e: Exception) {
+                Log.e("AchievementViewModel", "Error fetching data", e)
+                achievementLoadErrorLD.postValue(true)
+                loadingLD.postValue(false)
             }
-        )
+        }
+    }
 
-        stringRequest.tag = TAG
-        queue?.add(stringRequest)
-
+    // Function to insert new achievements into the database
+    fun insertAchievements(achievements: List<Model.Achievement>) {
+        viewModelScope.launch {
+            try {
+                achievementDao.insertAll(achievements)
+                refresh() // Refresh the data after inserting
+            } catch (e: Exception) {
+                Log.e("AchievementViewModel", "Error inserting data", e)
+                achievementLoadErrorLD.postValue(true)
+            }
+        }
     }
 
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)
     }
-
 }

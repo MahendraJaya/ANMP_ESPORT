@@ -6,28 +6,27 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(Model.User::class), version = 1)
+const val DB_NAME = "user_database"
+
+@Database(entities = [Model.User::class], version = 1)
 abstract class UserDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
     companion object {
-        @Volatile private var instance: UserDatabase ?= null
+        @Volatile private var instance: UserDatabase? = null
         private val LOCK = Any()
+
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+            instance ?: buildDatabase(context).also {
+                instance = it
+            }
+        }
 
         fun buildDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
                 UserDatabase::class.java,
-                DB_NAME).build()
-
-        operator fun invoke(context: Context) {
-            if(instance == null) {
-                synchronized(LOCK) {
-                    instance ?: buildDatabase(context).also {
-                        instance = it
-                    }
-                }
-            }
-        }
+                DB_NAME
+            ).build()
     }
 }
