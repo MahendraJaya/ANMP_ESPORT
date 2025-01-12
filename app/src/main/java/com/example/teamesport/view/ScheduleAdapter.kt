@@ -34,7 +34,7 @@ class ScheduleAdapter(val schedList:ArrayList<Schedule>): RecyclerView.Adapter<S
         }
     }
 
-    fun updateScheduleList(newScheduleList: ArrayList<Schedule>) {
+    fun updateScheduleList(newScheduleList: List<Schedule>) {
         schedList.clear()
         schedList.addAll(newScheduleList)
         notifyDataSetChanged()

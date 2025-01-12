@@ -14,12 +14,14 @@ import com.example.teamesport.model.Achievement
 import com.example.teamesport.model.Game
 import com.example.teamesport.viewmodel.AchievementViewModel
 import com.example.teamesport.viewmodel.GameViewModel
+import com.example.teamesport.viewmodel.ScheduleViewModel
 
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    private lateinit var gamesModelView: GameViewModel
-    private lateinit var achModelView: AchievementViewModel
+//    private lateinit var gamesModelView: GameViewModel
+//    private lateinit var achModelView: AchievementViewModel
+//    private lateinit var  schedModelView : ScheduleViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,8 +30,9 @@ class LoginFragment : Fragment() {
             inflater,
             container, false
         )
-        gamesModelView = ViewModelProvider(this).get(GameViewModel::class.java)
-        achModelView = ViewModelProvider(this).get(AchievementViewModel::class.java)
+//        gamesModelView = ViewModelProvider(this).get(GameViewModel::class.java)
+//        achModelView = ViewModelProvider(this).get(AchievementViewModel::class.java)
+//        schedModelView = ViewModelProvider(this).get(ScheduleViewModel::class.java)
         return binding.root
     }
 
@@ -48,7 +51,15 @@ class LoginFragment : Fragment() {
 //                "The Legend of Zelda: Breath of the Wild",
 //                "The International 2023 1st place",
 //                2023)
-
+//            schedModelView.inputSched(1,
+//                "The International 2024 Final",
+//                "OG vs. Team Liquid",
+//                "14:00",
+//                "Aug",
+//                "15",
+//                "The Upper Bracket Semifinals at The International 2024 pits two titans of Dota 2 against each other: OG and Team Liquid. With both teams having won multiple major tournaments, this clash is set to be a masterclass in strategy, teamwork, and high-level mechanics. Fans are eager to witness OG’s unique, unpredictable playstyle face off against Liquid’s refined, calculated approach. The stakes are high, as the winner will move one step closer to the Aegis of Champions, while the loser will face a challenging road in the lower bracket. Copenhagen will be the battleground for this highly anticipated match.",
+//                "Copenhagen, Denmark",
+//                "https://smartlaunch.com/wp-content/uploads/2024/08/the-international-2024-copenhagen-7687.jpg")
         }
 
         binding.btnRegister.setOnClickListener {
