@@ -47,6 +47,16 @@ import java.util.Date
         val gameId: Int
     )
 
+    @Entity(tableName = "members")
+    data class Member(
+        @PrimaryKey(autoGenerate = true)
+        val id: Int = 0,
+        var name: String?,
+        var teamId: Int?,
+        var role: String?,
+        var imageUrl : String?
+)
+
     @Entity(tableName = "schedules")
     data class Schedule(
         @PrimaryKey(autoGenerate = true)

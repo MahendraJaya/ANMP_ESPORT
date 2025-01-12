@@ -63,6 +63,9 @@
         <argument
             android:name="team"
             app:argType="string" />
+        <argument
+            android:name="teamIds"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/scheduleFragment"
