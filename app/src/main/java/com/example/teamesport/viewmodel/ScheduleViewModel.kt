@@ -9,12 +9,12 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.teamesport.model.Model
+import com.example.teamesport.model.Schedule
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class ScheduleViewModel(application: Application) : AndroidViewModel(application) {
-    val schedLD = MutableLiveData<ArrayList<Model.Schedule>>()
+    val schedLD = MutableLiveData<ArrayList<Schedule>>()
     val schedLoadError = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     val TAG = "volleyTag"
@@ -28,9 +28,9 @@ class ScheduleViewModel(application: Application) : AndroidViewModel(application
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
-                val sType = object : TypeToken<List<Model.Schedule>>() {}.type
-                val result = Gson().fromJson<List<Model.Schedule>>(it, sType)
-                schedLD.value = result as ArrayList<Model.Schedule>?
+                val sType = object : TypeToken<List<Schedule>>() {}.type
+                val result = Gson().fromJson<List<Schedule>>(it, sType)
+                schedLD.value = result as ArrayList<Schedule>?
                 loadingLD.value = false
                 Log.d("showvolley", result.toString())
 

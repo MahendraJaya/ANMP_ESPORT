@@ -7,7 +7,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import buildDb
-import com.example.teamesport.model.Model
+import com.example.teamesport.model.User
 import com.example.teamesport.util.SharePref
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -51,7 +51,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application), C
             if (existingUser != null) {
                 register.postValue("Username already exists!")
             } else {
-                val newUser = Model.User(
+                val newUser = User(
                     firstname = firstname,
                     lastname = lastname,
                     username = username,

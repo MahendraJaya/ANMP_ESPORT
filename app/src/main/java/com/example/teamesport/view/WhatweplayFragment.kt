@@ -1,6 +1,7 @@
 package com.example.teamesport.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +56,7 @@ class WhatweplayFragment : Fragment() {
         viewModel.gameLD.observe(viewLifecycleOwner, Observer {
             //TODO salah penamaan
             gameListAdapter.updateStudentList(it)
+            Log.d("what_we_play", "observeViewModel: masuk")
 //              binding.refreshLayout.isRefreshing = false
         })
 

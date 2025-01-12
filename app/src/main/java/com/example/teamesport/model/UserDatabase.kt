@@ -8,9 +8,14 @@ import androidx.room.RoomDatabase
 
 const val DB_NAME = "user_database"
 
-@Database(entities = [Model.User::class], version = 1)
+@Database(entities = [User::class, Achievement::class, Game::class, Schedule::class, Team::class], version = 1, exportSchema = false)
 abstract class UserDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun achievementDao(): AchievementDao
+    abstract fun gameDao(): GameDao
+    abstract fun scheduleDao(): ScheduleDao
+    abstract fun teamDao(): TeamDao
+
 
     companion object {
         @Volatile private var instance: UserDatabase? = null
@@ -26,7 +31,7 @@ abstract class UserDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 UserDatabase::class.java,
-                DB_NAME
-            ).build()
+                "esport1"
+            ).fallbackToDestructiveMigration().build()
     }
 }

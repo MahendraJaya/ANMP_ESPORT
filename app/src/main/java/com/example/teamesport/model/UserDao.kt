@@ -10,45 +10,17 @@ import androidx.room.Update
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg user: Model.User)
+    fun insertAll(vararg user: User)
 
     @Query("SELECT * FROM users")
-    fun selectAllUser(): List<Model.User>
+    fun selectAllUser(): List<User>
 
-    @Query("SELECT * FROM users WHERE username= :username")
-    fun selectUser(username:String): Model.User
+    @Query("SELECT * FROM users WHERE username = :username")
+    fun selectUser(username: String): User
 
     @Delete
-    fun deleteTodo(user:Model.User)
+    fun deleteTodo(user:User)
 
     @Update
-    fun update(user: Model.User)
-}
-
-
-@Dao
-interface GameDao {
-    @Insert
-    suspend fun insertAll(games: List<Model.Game>)
-
-    @Query("SELECT * FROM games")
-    suspend fun getAllGames(): List<Model.Game>
-}
-
-@Dao
-interface AchievementDao {
-    @Insert
-    suspend fun insertAll(achievements: List<Model.Achievement>)
-
-    @Query("SELECT * FROM achievements")
-    suspend fun getAllAchievements(): List<Model.Achievement>
-}
-
-@Dao
-interface ScheduleDao {
-    @Insert
-    suspend fun insertAll(schedules: List<Model.Schedule>)
-
-    @Query("SELECT * FROM schedules")
-    suspend fun getAllSchedules(): List<Model.Schedule>
+    fun update(user: User)
 }

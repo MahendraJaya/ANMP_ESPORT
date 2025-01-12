@@ -9,8 +9,6 @@ import androidx.room.PrimaryKey
 import java.time.Year
 import java.util.Date
 
-class Model {
-
     @Entity(tableName = "games")
     data class Game(
         @PrimaryKey(autoGenerate = true)
@@ -38,7 +36,15 @@ class Model {
         var gameAchievement: String?,
         @ColumnInfo(name = "game_year")
         @SerializedName("gameYear")
-        var gameYear: Int?
+        var gameYear: Int?,
+    )
+
+    @Entity(tableName = "teams")
+    data class Team(
+        @PrimaryKey(autoGenerate = true)
+        val id: Int = 0,
+        val teamName: String,
+        val gameId: Int
     )
 
     @Entity(tableName = "schedules")
@@ -80,4 +86,3 @@ class Model {
         @PrimaryKey var username: String,
         var password: String
     ): Serializable
-}
