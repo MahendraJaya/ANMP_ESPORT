@@ -53,9 +53,9 @@ class WhatweplayFragment : Fragment() {
 
     fun observeViewModel(){
         viewModel.gameLD.observe(viewLifecycleOwner, Observer {
-            //salah penamaan
+            //TODO salah penamaan
             gameListAdapter.updateStudentList(it)
-//            binding.refreshLayout.isRefreshing = false
+//              binding.refreshLayout.isRefreshing = false
         })
 
         viewModel.gameLoadErrorLD.observe(viewLifecycleOwner, Observer{
