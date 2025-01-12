@@ -12,10 +12,10 @@ interface TeamDao {
     fun insertAll(teams: List<Team>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertGame(vararg games: Team)
+    fun insertTeam(vararg teams: Team)
 
 
-    @Query("SELECT * FROM teams")
-    fun getAllGames(): List<Team>
+    @Query("SELECT * FROM teams where gameId = :gameId")
+    fun getAllTeams( gameId: Int ): List<Team>
 
 }

@@ -43,6 +43,9 @@
         <argument
             android:name="gambar"
             app:argType="string" />
+        <argument
+            android:name="gameIds"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemWhoweare"
