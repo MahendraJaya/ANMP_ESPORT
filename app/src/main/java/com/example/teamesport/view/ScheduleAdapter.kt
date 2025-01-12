@@ -7,9 +7,10 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teamesport.databinding.ScheduleItemBinding
-import com.example.teamesport.model.Model
+import com.example.teamesport.model.Schedule
 
-class ScheduleAdapter(val schedList:ArrayList<Model.Schedule>): RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>() {
+
+class ScheduleAdapter(val schedList:ArrayList<Schedule>): RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>() {
     class ScheduleViewHolder(var binding: ScheduleItemBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
@@ -34,7 +35,7 @@ class ScheduleAdapter(val schedList:ArrayList<Model.Schedule>): RecyclerView.Ada
         }
     }
 
-    fun updateScheduleList(newScheduleList: ArrayList<Model.Schedule>) {
+    fun updateScheduleList(newScheduleList: ArrayList<Schedule>) {
         schedList.clear()
         schedList.addAll(newScheduleList)
         notifyDataSetChanged()

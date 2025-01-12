@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teamesport.databinding.GameListItemBinding
-import com.example.teamesport.model.Model
+import com.example.teamesport.model.Game
 import com.squareup.picasso.Picasso
 
-class GameListAdapter(val gamelist:ArrayList<Model.Game>):RecyclerView.Adapter<GameListAdapter.WhatWePlayViewHolder>() {
+class GameListAdapter(val gamelist:ArrayList<Game>):RecyclerView.Adapter<GameListAdapter.WhatWePlayViewHolder>() {
 
     class WhatWePlayViewHolder(var binding: GameListItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -43,7 +43,7 @@ class GameListAdapter(val gamelist:ArrayList<Model.Game>):RecyclerView.Adapter<G
         }
     }
 
-    fun updateStudentList(newStudentList: ArrayList<Model.Game>) {
+    fun updateStudentList(newStudentList: ArrayList<Game>) {
         gamelist.clear()
         gamelist.addAll(newStudentList)
         notifyDataSetChanged()

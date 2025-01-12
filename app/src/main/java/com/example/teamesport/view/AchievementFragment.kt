@@ -11,7 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.teamesport.R
 import com.example.teamesport.databinding.FragmentAchievementBinding
-import com.example.teamesport.model.Model
+import com.example.teamesport.model.Achievement
+
 import com.example.teamesport.viewmodel.AchievementViewModel
 import com.squareup.picasso.Picasso
 
@@ -68,7 +69,7 @@ class AchievementFragment : Fragment() {
         }
     }
 
-    fun viewAchievement(achievement: List<Model.Achievement>, gameName: String){
+    fun viewAchievement(achievement: List<Achievement>, gameName: String){
         val filteredAchievements = achievement.filter { it.gameTitle == gameName }
         val formattedAchievements = filteredAchievements.mapIndexed { index, achievement ->
             "${index + 1}. ${achievement.gameAchievement} (${achievement.gameYear})"
@@ -77,7 +78,7 @@ class AchievementFragment : Fragment() {
         binding.txtAchievement.text = formattedAchievements
     }
 
-    fun viewAchievementWithYear(achievement: List<Model.Achievement>, gameName: String, year:String){
+    fun viewAchievementWithYear(achievement: List<Achievement>, gameName: String, year:String){
 
         if(year == "All"){
             val filteredAchievements = achievement.filter { it.gameTitle == gameName }

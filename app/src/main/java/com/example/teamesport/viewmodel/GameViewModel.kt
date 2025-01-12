@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+<<<<<<< Updated upstream
 import androidx.lifecycle.ViewModel
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -17,6 +18,22 @@ import com.google.gson.reflect.TypeToken
 class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     val gameLD = MutableLiveData<ArrayList<Model.Game>>()
+=======
+import androidx.lifecycle.viewModelScope
+import buildDb
+import com.example.teamesport.model.Game
+import com.example.teamesport.model.GameDao
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
+
+
+class GameViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
+    private val job = Job()
+    val gameLD = MutableLiveData<List<Game>>()
+>>>>>>> Stashed changes
     val gameLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     val TAG = "volleyTag"
@@ -34,6 +51,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         gameLoadErrorLD.value = false
         loadingLD.value = true
 
+<<<<<<< Updated upstream
         queue = Volley.newRequestQueue(getApplication())
         val url = "https://www.jsonkeeper.com/b/3N3Z"
 
@@ -55,6 +73,19 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
                 Log.d("showvoley", it.toString())
                 gameLoadErrorLD.value = false
                 loadingLD.value = false
+=======
+        viewModelScope.launch {
+            try {
+                // Fetch data from the database
+                val db = buildDb(getApplication())
+                val cachedGames = db.gameDao().getAllGames()
+                gameLD.postValue(cachedGames)
+                loadingLD.postValue(false)
+            } catch (e: Exception) {
+                Log.e("GameViewModel", "Error fetching data", e)
+                gameLoadErrorLD.postValue(true)
+                loadingLD.postValue(false)
+>>>>>>> Stashed changes
             }
         )
 
@@ -63,10 +94,44 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
+<<<<<<< Updated upstream
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)
     }
 
 
+=======
+    // Function to insert new games into the database
+    fun insertGames(games: List<Game>) {
+        viewModelScope.launch {
+            try {
+                val db = buildDb(getApplication())
+                db.gameDao().insertAll(games)
+                refresh() // Refresh the data after inserting
+            } catch (e: Exception) {
+                Log.e("GameViewModel", "Error inserting data", e)
+                gameLoadErrorLD.postValue(true)
+            }
+        }
+    }
+
+    fun cobaGames(games: Game){
+        viewModelScope.launch {
+            try {
+                val db = buildDb(getApplication())
+                db.gameDao().insertGame(games)
+                Log.d("insert_data_game", "cobaGames: berhasil")
+                refresh() // Refresh the data after inserting
+            } catch (e: Exception) {
+                Log.e("GameViewModel", "Error inserting data", e)
+                gameLoadErrorLD.postValue(true)
+            }
+        }
+    }
+
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
+>>>>>>> Stashed changes
 }

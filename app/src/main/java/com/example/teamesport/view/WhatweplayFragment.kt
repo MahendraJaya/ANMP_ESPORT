@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teamesport.databinding.FragmentWhatweplayBinding
+import com.example.teamesport.model.Game
 import com.example.teamesport.viewmodel.GameViewModel
 
 
@@ -33,12 +34,12 @@ class WhatweplayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
-        viewModel.refresh()
-        binding.recView.layoutManager= LinearLayoutManager(context)
-        binding.recView.adapter = gameListAdapter
+//        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+//        viewModel.refresh()
+//        binding.recView.layoutManager= LinearLayoutManager(context)
+//        binding.recView.adapter = gameListAdapter
 
-        observeViewModel()
+//        observeViewModel()
 
 //        binding.btnAchievement.setOnClickListener {
 //            val action = WhatweplayFragmentDirections.actionAchievementFragment()
@@ -52,6 +53,7 @@ class WhatweplayFragment : Fragment() {
     }
 
     fun observeViewModel(){
+<<<<<<< Updated upstream
         viewModel.gameLD.observe(viewLifecycleOwner, Observer {
             gameListAdapter.updateStudentList(it)
 //            binding.refreshLayout.isRefreshing = false
@@ -66,6 +68,23 @@ class WhatweplayFragment : Fragment() {
 //                binding.txtError?.visibility = View.GONE
             }
         })
+=======
+//        viewModel.gameLD.observe(viewLifecycleOwner, Observer {
+//            //TODO salah penamaan
+////            gameListAdapter.updateStudentList(it as ArrayList<Game>)
+////              binding.refreshLayout.isRefreshing = false
+//        })
+//
+//        viewModel.gameLoadErrorLD.observe(viewLifecycleOwner, Observer{
+//            if(it == true){
+//                binding.recView.visibility = View.GONE
+////                binding.txtError?.visibility = View.VISIBLE
+//            }else{
+//                binding.recView.visibility = View.VISIBLE
+////                binding.txtError?.visibility = View.GONE
+//            }
+//        })
+>>>>>>> Stashed changes
     }
 
 
