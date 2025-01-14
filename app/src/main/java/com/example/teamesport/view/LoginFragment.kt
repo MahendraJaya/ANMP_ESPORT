@@ -24,7 +24,7 @@ class LoginFragment : Fragment() {
 //    private lateinit var gamesModelView: GameViewModel
 //    private lateinit var achModelView: AchievementViewModel
 //    private lateinit var  schedModelView : ScheduleViewModel
-    private lateinit var teamViewModel: TeamViewModel
+//    private lateinit var teamViewModel: TeamViewModel
 //    private lateinit var memberViewModel: MemberViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
 //        gamesModelView = ViewModelProvider(this).get(GameViewModel::class.java)
 //        achModelView = ViewModelProvider(this).get(AchievementViewModel::class.java)
 //        schedModelView = ViewModelProvider(this).get(ScheduleViewModel::class.java)
-        teamViewModel = ViewModelProvider(this).get(TeamViewModel::class.java)
+//        teamViewModel = ViewModelProvider(this).get(TeamViewModel::class.java)
 //        memberViewModel = ViewModelProvider(this).get(MemberViewModel::class.java)
         return binding.root
     }

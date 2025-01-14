@@ -18,4 +18,5 @@ interface GameDao {
     @Query("SELECT * FROM games")
     fun getAllGames(): List<Game>
 
+
 }

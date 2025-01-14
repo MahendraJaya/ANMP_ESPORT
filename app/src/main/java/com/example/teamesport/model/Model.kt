@@ -47,6 +47,16 @@ import java.util.Date
         val gameId: Int
     )
 
+    @Entity(tableName = "apply_teams")
+    data class ApplyTeam(
+        @PrimaryKey(autoGenerate = true)
+        val id: Int = 0,
+        val teamName: String,
+        val gameId: String,
+        val username:String,
+        val gameName:String
+    )
+
     @Entity(tableName = "members")
     data class Member(
         @PrimaryKey(autoGenerate = true)
